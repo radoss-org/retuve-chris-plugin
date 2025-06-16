@@ -1,0 +1,4 @@
+curl -u "chris:chris1234" http://localhost:8000/chris-admin/api/v1/ \
+    -H 'Accept: application/json' \
+    -F fname=@description.json \
+    -F compute_names=host
