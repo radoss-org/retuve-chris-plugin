@@ -45,5 +45,7 @@ docker run --rm -v $PWD/retuve-data/default/uploaded:/incoming \
 retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
 ```
 
+Suitable files for testing purposes can be found here: https://github.com/radoss-org/radoss-creative-commons/tree/main/dicoms/ultrasound
+
 ## Useful Resources
 - https://github.com/FNNDSC/python-chrisapp-template
