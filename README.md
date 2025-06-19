@@ -43,6 +43,7 @@ docker run --rm -v $PWD/retuve-data/default/uploaded:/incoming \
 
 ```bash
 retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
+```
 
 ## Useful Resources
 - https://github.com/FNNDSC/python-chrisapp-template
