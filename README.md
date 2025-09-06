@@ -59,6 +59,5 @@ Suitable files for testing purposes can be found here: https://github.com/radoss
 sudo docker run --rm docker.io/sharp6292/retuve_chris_plugin:1.0.0 chris_plugin_info -d docker.io/sharp6292/retuve_chris_plugin:1.0.0 > description.json
 ```
 
-
 ## Useful Resources
 - https://github.com/FNNDSC/python-chrisapp-template
