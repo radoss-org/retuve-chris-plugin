@@ -3,3 +3,6 @@ build/
 retuve-data
 __pycache__/
 description.json
+.vscode
+.env
+.venv
