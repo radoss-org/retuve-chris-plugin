@@ -18,6 +18,8 @@ The Docker image is automatically built and published to GitHub Container Regist
 ### Manual Building (if needed)
 
 ```bash
+uv pip compile requirements.txt -o requirements.lock
+
 sudo docker build -t ghcr.io/radoss-org/retuve-chris-plugin:latest .
 sudo docker push ghcr.io/radoss-org/retuve-chris-plugin:latest
 ```

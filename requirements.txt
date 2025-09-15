@@ -1,5 +1,5 @@
 chris_plugin
-retuve-yolo-plugin>=1.0.0
+retuve-yolo-plugin @git+https://github.com/radoss-org/retuve-yolo-plugin.git
 pynetdicom
 onnx
 onnxruntime
