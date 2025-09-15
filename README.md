@@ -13,13 +13,19 @@ We recommend using [MiniChRIS](https://github.com/FNNDSC/miniChRIS-docker) to ru
 
 ## Plugin Building
 
-```bash
-sudo docker build -t docker.io/sharp6292/retuve_chris_plugin:1.0.0 .
-sudo docker push docker.io/sharp6292/retuve_chris_plugin:1.0.0
-```
+The Docker image is automatically built and published to GitHub Container Registry via GitHub Actions when code is pushed to the main branch or when tags are created.
+
+### Manual Building (if needed)
 
 ```bash
-sudo docker pull docker.io/sharp6292/retuve_chris_plugin:1.0.0
+sudo docker build -t ghcr.io/radoss-org/retuve-chris-plugin:latest .
+sudo docker push ghcr.io/radoss-org/retuve-chris-plugin:latest
+```
+
+### Pulling the Image
+
+```bash
+sudo docker pull ghcr.io/radoss-org/retuve-chris-plugin:latest
 ```
 
 ### Plugin Upload
@@ -44,7 +50,7 @@ sudo docker run --rm \
   -v $PWD/retuve-data/default/uploaded:/incoming \
   -v $PWD/retuve-data/default/savedir:/outgoing \
   --user 1001 \
-  docker.io/sharp6292/retuve_chris_plugin:1.0.0 \
+  ghcr.io/radoss-org/retuve-chris-plugin:latest \
   retuve_chris_plugin /incoming /outgoing
 ```
 
@@ -56,7 +62,7 @@ retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
 Suitable files for testing purposes can be found here: https://github.com/radoss-org/radoss-creative-commons/tree/main/dicoms/ultrasound
 
 ```bash
-sudo docker run --rm docker.io/sharp6292/retuve_chris_plugin:1.0.0 chris_plugin_info -d docker.io/sharp6292/retuve_chris_plugin:1.0.0 > description.json
+sudo docker run --rm ghcr.io/radoss-org/retuve-chris-plugin:latest chris_plugin_info -d ghcr.io/radoss-org/retuve-chris-plugin:latest > description.json
 ```
 
 ## Useful Resources
