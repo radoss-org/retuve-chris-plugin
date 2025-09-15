@@ -24,6 +24,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Copy source code
 COPY retuve_chris_plugin/ ./retuve_chris_plugin/
 RUN uv pip install --system --no-cache-dir --no-deps .
+RUN kaleido_get_chrome
 RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/choreographer/
 RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/retuve_yolo_plugin/weights/
 
