@@ -14,12 +14,14 @@ COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
 # Copy only dependency files first for better caching
 COPY requirements.lock setup.py ./
 
+RUN grep -v "nvidia-" requirements.lock > requirements_no_torch.lock
+
 ENV UV_LINK_MODE=copy
 # Install dependencies into the venv
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system torch torchvision \
     --index-url https://download.pytorch.org/whl/cpu && \
-    uv pip install --system -r requirements.lock
+    uv pip install --system -r requirements_no_torch.lock
 
 # Copy source code
 COPY retuve_chris_plugin/ ./retuve_chris_plugin/
