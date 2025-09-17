@@ -12,18 +12,19 @@ WORKDIR /usr/local/src
 COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
 
 # Copy only dependency files first for better caching
-COPY requirements.txt setup.py ./
+COPY requirements.lock setup.py ./
 
 ENV UV_LINK_MODE=copy
 # Install dependencies into the venv
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system torch torchvision \
     --index-url https://download.pytorch.org/whl/cpu && \
-    uv pip install --system -r requirements.txt
+    uv pip install --system -r requirements.lock
 
 # Copy source code
 COPY retuve_chris_plugin/ ./retuve_chris_plugin/
 RUN uv pip install --system --no-cache-dir --no-deps .
+RUN kaleido_get_chrome
 RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/choreographer/
 RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/retuve_yolo_plugin/weights/
 
