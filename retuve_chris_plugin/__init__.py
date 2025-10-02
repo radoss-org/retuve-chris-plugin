@@ -373,11 +373,7 @@ def main(options: Namespace, inputdir, outputdir):
         )
 
         r_gen.add_warning(
-            "A infant at 16 weeks can have an alpha angle on average 5 degrees higher than at 1-8 weeks (Hareendranathan et al., 2022 - Normal variation)"
-        )
-
-        r_gen.add_warning(
-            "For this version, we recommend a Alpha Threshold of 50 and a Coverage Threshold of 50."
+            "Alpha angle is expected to increase with age. At 16 weeks, alpha angle is on average 5 degrees higher than at 1-8 weeks. (Hareendranathan et al., 2022 - Normal variation))"
         )
 
         r_gen.add_highlights(
