@@ -320,7 +320,8 @@ def main(options: Namespace, inputdir, outputdir):
     default_US.visuals.display_segs = False
     default_US.visuals.display_full_metric_names = True
 
-    os.environ["GITHUB_PAT"] = options.github_secret
+    if options.github_secret is not None:
+        os.environ["GITHUB_PAT"] = options.github_secret
     model = get_yolo_model_us(default_US, options.model_url)
 
     mapper = PathMapper.file_mapper(inputdir, outputdir, glob="**/*.dcm")

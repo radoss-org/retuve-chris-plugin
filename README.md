@@ -57,7 +57,7 @@ sudo docker run --rm \
 ```
 
 ```bash
-pip install --no-deps .
+uv pip install --no-deps .
 retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
 ```
 
