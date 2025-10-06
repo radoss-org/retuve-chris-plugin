@@ -3,7 +3,7 @@ from setuptools import setup
 
 # Read requirements from requirements.lock
 def read_requirements():
-    with open("requirements.lock", "r") as f:
+    with open("requirements.txt", "r") as f:
         return [
             line.strip()
             for line in f
