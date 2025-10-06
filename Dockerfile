@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -39,8 +39,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 COPY retuve_chris_plugin/ ./retuve_chris_plugin/
 RUN uv pip install --system --no-cache-dir --no-deps .
 RUN kaleido_get_chrome
-RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/choreographer/
-RUN chown -R 1001:1001 /usr/local/lib/python3.10/site-packages/retuve_yolo_plugin/weights/
+RUN chown -R 1001:1001 /usr/local/lib/python3.11/site-packages/choreographer/
+RUN chown -R 1001:1001 /usr/local/lib/python3.11/site-packages/retuve_yolo_plugin/weights/
 
 USER 1001
 
