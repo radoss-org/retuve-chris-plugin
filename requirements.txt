@@ -3,3 +3,4 @@ retuve-yolo-plugin>=1.0.0
 pynetdicom
 onnx
 onnxruntime
+psutil

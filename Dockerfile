@@ -4,6 +4,18 @@ FROM python:3.10
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglx-mesa0 \
+    libnss3 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libxkbcommon0 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libasound2 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/src
@@ -35,10 +47,6 @@ USER 1001
 WORKDIR /home/chris/
 
 RUN chown -R 1001:1001 /home/chris/
-
-ENV MPLCONFIGDIR=/tmp/matplotlib
-ENV XDG_CACHE_HOME=/tmp/.cache
-ENV YOLO_CONFIG_DIR=/tmp/Ultralytics
 
 COPY images/ /home/chris/images/
 

@@ -1,7 +1,7 @@
 {
-    "name": "retuve_chris_plugin",
-    "dock_image": "docker.io/sharp6292/retuve_chris_plugin:1.0.0",
-    "public_repo": "https://github.com/sharp6292/retuve_chris_plugin",
+    "name": "retuve-chris-plugin",
+    "dock_image": "ghcr.io/radoss-org/retuve-chris-plugin:latest",
+    "public_repo": "https://github.com/radoss-org/retuve-chris-plugin",
     "type": "ds",
     "parameters": [
         {
@@ -46,6 +46,17 @@
             "action": "store",
             "help": "Float value for min_seg_confidence",
             "default": 0.6,
+            "ui_exposed": true
+        },
+        {
+            "name": "device",
+            "type": "str",
+            "optional": true,
+            "flag": "--device",
+            "short_flag": "--device",
+            "action": "store",
+            "help": "String value for device",
+            "default": "cpu",
             "ui_exposed": true
         },
         {
