@@ -5,7 +5,6 @@ from typing import Any
 from dotenv import load_dotenv
 from retuve.defaults.hip_configs import default_US
 from retuve.keyphrases.enums import Colors, HipMode
-from retuve_yolo_plugin.ultrasound import yolo_predict_dcm_us
 
 load_dotenv()
 
@@ -154,6 +153,8 @@ def apply_args_to_config(
 
 
 def apply_config(options, inputdir, outputdir):
+    from retuve_yolo_plugin.ultrasound import yolo_predict_dcm_us
+
     # Apply command line arguments to the config
     apply_args_to_config(default_US, options)
     apply_args_to_config(default_US.hip, options, "hip.")
@@ -172,6 +173,7 @@ def apply_config(options, inputdir, outputdir):
     default_US.batch.hip_mode = HipMode.US3D
     default_US.visuals.display_segs = False
     default_US.visuals.display_full_metric_names = True
+    default_US.worker_device = "cpu"
 
     return default_US
 
@@ -199,4 +201,18 @@ parser.add_argument(
     default=None,
     metavar="",
     help="URL for a custom Retuve model",
+)
+parser.add_argument(
+    "--chris-api-url",
+    type=str,
+    default="https://chris-api.nidusai.ca/api/v1",
+    metavar="",
+    help="URL for a custom Cube",
+)
+parser.add_argument(
+    "--token",
+    type=str,
+    default="",
+    metavar="",
+    help="Login Token for a custom Cube",
 )

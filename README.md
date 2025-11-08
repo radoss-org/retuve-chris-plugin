@@ -18,8 +18,6 @@ The Docker image is automatically built and published to GitHub Container Regist
 ### Manual Building (if needed)
 
 ```bash
-uv pip compile requirements.txt -o requirements.lock
-
 sudo docker build -t ghcr.io/radoss-org/retuve-chris-plugin:latest .
 sudo docker push ghcr.io/radoss-org/retuve-chris-plugin:latest
 ```
@@ -58,7 +56,7 @@ sudo docker run --rm \
 
 ```bash
 uv pip install --no-deps .
-retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
+dotenv run -- retuve_chris_plugin retuve-data/default/uploaded retuve-data/default/savedir
 ```
 
 Suitable files for testing purposes can be found here: https://github.com/radoss-org/radoss-creative-commons/tree/main/dicoms/ultrasound

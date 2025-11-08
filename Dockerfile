@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     libcairo2 \
     libasound2 \
     libpangoft2-1.0-0 \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/src
@@ -32,12 +33,15 @@ ENV UV_LINK_MODE=copy
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match
 
-# Copy source code
+RUN kaleido_get_chrome
+RUN chown -R 1001:1001 /usr/local/lib/python3.11/site-packages/choreographer/
+
+RUN git clone --branch metrics-plugin --single-branch https://github.com/radoss-org/retuve.git && \
+    cd retuve && uv pip install --system --no-cache-dir --no-deps .
+
 COPY retuve_chris_plugin/ ./retuve_chris_plugin/
 COPY setup.py setup.py
 RUN uv pip install --system --no-cache-dir --no-deps .
-RUN kaleido_get_chrome
-RUN chown -R 1001:1001 /usr/local/lib/python3.11/site-packages/choreographer/
 RUN chown -R 1001:1001 /usr/local/lib/python3.11/site-packages/retuve_yolo_plugin/weights/
 
 USER 1001
